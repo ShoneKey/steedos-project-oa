@@ -4,11 +4,24 @@ services:
   steedos:
     build: .
     image: steedos-project-oa:latest
-    restart: unless-stopped
+    #restart: unless-stopped
     ports:
-      - "5080:5080"
+      - "7070:7070"
     volumes:
       - /srv/workflow/cfs:/storage
       - ./src:/app/src
       - ./steedos-config.yml:/app/steedos-config.yml
       - ./.env.local:/app/.env.local
+
+  mongodb_container:
+    container_name: mongo
+    image: mongo:latest
+    #environment:
+      #MONGO_INITDB_ROOT_USERNAME: root
+      #MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+volumes:
+  mongodb_data_container: 
