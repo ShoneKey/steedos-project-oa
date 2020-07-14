@@ -11,7 +11,7 @@ services:
       - /srv/workflow/cfs:/storage
       - ./src:/app/src
       - ./steedos-config.yml:/app/steedos-config.yml
-      - ./.env.local:/app/.env.local
+      #- ./.env.local:/app/.env.local
 
   mongodb_container:
     container_name: mongo
